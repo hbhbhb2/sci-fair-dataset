@@ -49,7 +49,7 @@ class CharDataset(tfds.core.GeneratorBasedBuilder):
 
   def _split_generators(self, dl_manager: tfds.download.DownloadManager):
     """Returns SplitGenerators."""
-    zip_path = dl_manager.manual_dir / 'train.zip' # ~/tensorflow_datasets/downloads/manual/train.zip
+    zip_path = f'{dl_manager.manual_dir}/train.zip' # ~/tensorflow_datasets/downloads/manual/train.zip
     path = dl_manager.extract(zip_path)
 
     return {
