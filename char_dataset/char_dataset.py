@@ -54,8 +54,8 @@ class CharDataset(tfds.core.GeneratorBasedBuilder):
 
     return {
         'train': self._generate_examples(
-            img_path = path / 'train',
-            csv_path = path / 'train.csv'
+            img_path = f'{path}/train',
+            csv_path = f'{path}/train.csv'
           ),
     }
 
@@ -65,6 +65,6 @@ class CharDataset(tfds.core.GeneratorBasedBuilder):
       for row in csv.DictReader(f):
         id = row['FILENAME']
         yield id, {
-          'image': img_path / id,
+          'image': f'{img_path}/{id}',
           'label': row['IDENTITY']
         }
