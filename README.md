@@ -1,3 +1,3 @@
 # Dataset for Science Fair
 
-TODO: README
+Dataset generating scripts (https://github.com/hbhbhb2/sci_fair_dataset)
