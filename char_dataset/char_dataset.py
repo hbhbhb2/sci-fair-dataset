@@ -49,13 +49,13 @@ class CharDataset(tfds.core.GeneratorBasedBuilder):
 
   def _split_generators(self, dl_manager: tfds.download.DownloadManager):
     """Returns SplitGenerators."""
-    zip_path = f'{dl_manager.manual_dir}/train.zip' # ~/tensorflow_datasets/downloads/manual/train.zip
+    zip_path = dl_manager.manual_dir / 'train.zip' # ~/tensorflow_datasets/downloads/manual/train.zip
     path = dl_manager.extract(zip_path)
 
     return {
         'train': self._generate_examples(
-            img_path = f'{path}/train',
-            csv_path = f'{path}/train.csv'
+            img_path = path / 'train',
+            csv_path = path / 'train.csv'
           ),
     }
 
@@ -65,6 +65,6 @@ class CharDataset(tfds.core.GeneratorBasedBuilder):
       for row in csv.DictReader(f):
         id = row['FILENAME']
         yield id, {
-          'image': f'{img_path}/{id}',
+          'image': img_path / id,
           'label': row['IDENTITY']
         }
