@@ -9,7 +9,7 @@ Character dataset extracted from the Kaggle transcription of 400,000 handwritten
 Processing steps:
  * Corrupted examples skipped
  * Characters of names incorrectly divided by pytesseract skipped
- * Images cropped to 256x256
+ * Images cropped to 32x32 and grayscaled
 """
 
 # TODO(char_dataset): BibTeX citation
@@ -36,7 +36,7 @@ class CharDataset(tfds.core.GeneratorBasedBuilder):
         description=_DESCRIPTION,
         features=tfds.features.FeaturesDict({
             # These are the features of your dataset like images, labels ...
-            'image': tfds.features.Image(shape=(256, 256, 3), encoding_format='jpeg'),
+            'image': tfds.features.Image(shape=(32, 32), encoding_format='jpeg'),
             'label': tfds.features.ClassLabel(names=[*"ABCDEFGHIJKLMNOPQRSTUVWXYZ-'"])
         }),
         # If there's a common (input, target) tuple from the
