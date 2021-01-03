@@ -36,7 +36,7 @@ class CharDataset(tfds.core.GeneratorBasedBuilder):
         description=_DESCRIPTION,
         features=tfds.features.FeaturesDict({
             # These are the features of your dataset like images, labels ...
-            'image': tfds.features.Image(shape=(32, 32), encoding_format='jpeg'),
+            'image': tfds.features.Image(shape=(32, 32, 1), encoding_format='jpeg'),
             'label': tfds.features.ClassLabel(names=[*"ABCDEFGHIJKLMNOPQRSTUVWXYZ-'"])
         }),
         # If there's a common (input, target) tuple from the
